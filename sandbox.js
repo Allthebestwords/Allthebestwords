@@ -97,17 +97,19 @@ const zipArray = [
 const dataArray = [];
 const sampleData = zipArray.forEach(zip => {
   const queryString = `https://www.googleapis.com/civicinfo/v2/voterinfo/?key=${googleKey}&address=${zip.zip}&electionId=7000`;
+  
   const response = request.get(queryString)
-    .then(response => State.insert({
-      state: zip.state,
-      name: response.name,
-      electionInfo: response.electionInfo,
-      registrationUrl: response.registrationUrl,
-      votingLocation: response.votingLocation,
-      ballotInfo: response.ballotInfo,
-      
-      
-    }));
+    .then(response => {
+      const data = response.body.state[0].electionAdministrationBody;
+      console.log(data);
+      State.insert({
+        state: zip.state,
+        name: data.name,
+        electionInfo: data.electionInfoUrl,
+        registrationUrl: data.electionRegistrationUrl,
+        votingLocation: data.votingLocationFinderUrl,
+        ballotInfo: data.ballotInfoUrl,  
+      });});
 });
 console.table(dataArray);
 
