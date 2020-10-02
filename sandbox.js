@@ -25,6 +25,10 @@
 //   console.log(data);
 // });
 const request = require('superagent');
+const fs = require('fs');
+const pool = require('./lib/utils/pool');
+const State = require('./lib/models/state');
+pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
 
 const googleKey = process.env.GOOGLE_TOKEN;
 const address = '25301';
@@ -80,21 +84,32 @@ const zipArray = [
   { state:'WV', zip:'25301' },
   { state:'WI', zip:'53703' },
   { state:'WY', zip:'82001' },
-  { state:'AS', zip:'96799' },
-  { state:'DC', zip:'20001' },
-  { state:'FM', zip:'96941' },
-  { state:'GU', zip:'96910' },
-  { state:'MH', zip:'96960' },
-  { state:'MP', zip:'96950' },
-  { state:'PW', zip:'96939' },
-  { state:'PR', zip:'00901' },
-  { state:'VI', zip:'00802' }];
+  // { state:'AS', zip:'96799' },
+  { state:'DC', zip:'20001' }];
+  // { state:'FM', zip:'96941' },
+  // { state:'GU', zip:'96910' },
+  // { state:'MH', zip:'96960' },
+  // { state:'MP', zip:'96950' },
+  // { state:'PW', zip:'96939' },
+  // { state:'PR', zip:'00901' },
+  // { state:'VI', zip:'00802' }];
 
-const sampleData = zipArray.map(zip => {
+const dataArray = [];
+const sampleData = zipArray.forEach(zip => {
   const queryString = `https://www.googleapis.com/civicinfo/v2/voterinfo/?key=${googleKey}&address=${zip.zip}&electionId=7000`;
-console.log(queryString);
   const response = request.get(queryString)
-    .then(response => console.log(response.body.state[0].electionAdministrationBody));
+    .then(response => State.insert({
+      state: zip.state,
+      name: response.name,
+      electionInfo: response.electionInfo,
+      registrationUrl: response.registrationUrl,
+      votingLocation: response.votingLocation,
+      ballotInfo: response.ballotInfo,
+      
+      
+    }));
 });
+console.table(dataArray);
+
 
 
