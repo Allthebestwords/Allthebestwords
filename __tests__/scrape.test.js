@@ -13,14 +13,14 @@ describe('VTMFOA routes', () => {
   it('returns scraped information with specific date', async() => {
     const scrapedData = await scrape();
 
-    expect(scrapedData).toEqual({
+    expect(scrapedData).toEqual(expect.arrayContaining([{
       state: expect.any(String),        
       regUrl: expect.any(String),
       checkRegUrl: expect.any(String),
       abReqUrl: expect.any(String),        
       votingInfo: expect.any(String)
    
-    });
+    }]));
   });
 });
 
