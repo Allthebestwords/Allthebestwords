@@ -23,5 +23,3 @@ CREATE TABLE quotes (
   quote TEXT NOT NULL,
   author TEXT NOT NULL
 );
-
-
