@@ -24,3 +24,6 @@ CREATE TABLE quotes (
   author TEXT NOT NULL,
   hashtags TEXT[] NOT NULL
 );
+
+
+
