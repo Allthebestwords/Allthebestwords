@@ -5,16 +5,9 @@ CREATE TABLE states (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   state TEXT NOT NULL,
   reg_url TEXT NOT NULL,
-  check_reg_url TEXT NOT NULL,
+  check_reg_url TEXT,
   ab_req_url TEXT,
-  online_reg_deadline DATE NOT NULL,
-  mail_reg_deadline DATE NOT NULL,
-  in_person_reg_deadline DATE NOT NULL,
-  ab_req_deadline DATE NOT NULL,
-  ab_ret_mail_deadline DATE NOT NULL,
-  ab_in_person_deadline DATE NOT NULL,
-  early_voting_start DATE,
-  postmark BOOLEAN 
+  voting_info TEXT NOT NULL
   
 );
 
