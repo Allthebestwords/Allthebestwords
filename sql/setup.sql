@@ -5,7 +5,7 @@ CREATE TABLE states (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   state TEXT NOT NULL,
   reg_url TEXT NOT NULL,
-  check_reg_url TEXT NOT NULL,
+  check_reg_url TEXT,
   ab_req_url TEXT,
   voting_info TEXT NOT NULL
   
