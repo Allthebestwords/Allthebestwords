@@ -14,5 +14,9 @@ CREATE TABLE states (
 CREATE TABLE quotes (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   quote TEXT NOT NULL,
-  author TEXT NOT NULL
+  author TEXT NOT NULL,
+  hashtags TEXT[] NOT NULL
 );
+
+
+
