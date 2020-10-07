@@ -1,7 +1,7 @@
 const fs = require('fs');
 const pool = require('../lib/utils/pool');
 const request = require('supertest');
-const app = require('../lib/app');
+//const app = require('../lib/app');
 const parse = require('../lib/scrape/parse');
 const scrape = require('../lib/scrape/scraper.js');
 
