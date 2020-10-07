@@ -7,7 +7,8 @@ CREATE TABLE states (
   reg_url TEXT NOT NULL,
   check_reg_url TEXT,
   ab_req_url TEXT,
-  voting_info TEXT NOT NULL
+  voting_info TEXT NOT NULL,
+  abbrv TEXT NOT NULL
   
 );
 
