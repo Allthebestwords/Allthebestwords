@@ -2,10 +2,12 @@ const State = require('../lib/models/state');
 const requestParser = require('../lib/services/request-parser');
 const fs = require('fs');
 const pool = require('../lib/utils/pool');
+const seedData = require('../lib/data/seed-data');
 
 describe('test request-parser', () => {
   beforeEach(() => {
-    return pool.query(fs.readFileSync('./sql/setup.SQL', 'utf-8'));
+    pool.query(fs.readFileSync('./sql/setup.SQL', 'utf-8'));
+    return seedData();
   });
   it('should return a state object given a state name', async() => {
     const Oregon = await State.findById('OR');
