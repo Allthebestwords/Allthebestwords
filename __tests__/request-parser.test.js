@@ -6,7 +6,7 @@ const seedData = require('../lib/data/seed-data');
 
 describe('test request-parser', () => {
   beforeEach(() => {
-    pool.query(fs.readFileSync('../sql/setup.SQL', 'utf-8'));
+    pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
     return seedData();
   });
   it('should return a state object given a state name', async() => {
