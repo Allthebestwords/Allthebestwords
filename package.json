@@ -37,5 +37,8 @@
     "superagent": "^6.1.0",
     "twilio": "^3.49.4",
     "twit": "^2.2.11"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
