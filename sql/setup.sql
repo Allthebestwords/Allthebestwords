@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS states;
+DROP TABLE IF EXISTS quotes;
+
+CREATE TABLE states (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  state TEXT NOT NULL,
+  reg_url TEXT NOT NULL,
+  check_reg_url TEXT,
+  ab_req_url TEXT,
+  voting_info TEXT NOT NULL,
+  abbrv TEXT NOT NULL
+  
+);
+
+CREATE TABLE quotes (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  quote TEXT NOT NULL,
+  author TEXT NOT NULL,
+  hashtags TEXT[] NOT NULL
+
+);
+
+
+
