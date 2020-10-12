@@ -4,7 +4,13 @@ const pool = require('./lib/utils/pool');
 const PORT = process.env.PORT || 7890;
 const twitBot = require('./lib/twitter/twit');
 
-twitBot();
+
+try {
+  twitBot();
+} catch(error) {
+  console.log(error.message);
+}
+
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
