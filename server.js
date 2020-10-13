@@ -5,11 +5,11 @@ const PORT = process.env.PORT || 7890;
 const twitBot = require('./lib/twitter/twit');
 
 
-// try {
-//   twitBot();
-// } catch(error) {
-//   console.log(error.message);
-// }
+try {
+  twitBot();
+} catch(error) {
+  console.log(error.message);
+}
 
 
 app.listen(PORT, () => {
